@@ -1,0 +1,9 @@
+{
+    Filter =     {
+        Bundles =         (
+            "com.apple.mobilemail",
+            "com.apple.UIKit",
+            "com.apple.springboard"
+        );
+    };
+}

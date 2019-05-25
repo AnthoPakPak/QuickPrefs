@@ -1,0 +1,9 @@
+Package: com.anthopak.easyopentweakprefs
+Name: EasyOpenTweakPrefs
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: TODO
+Maintainer: AnthoPak
+Author: AnthoPak
+Section: Tweaks
