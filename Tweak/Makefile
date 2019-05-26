@@ -4,6 +4,7 @@
 #TARGET = simulator:clang:latest:7.0
 #ARCHS = x86_64 i386
 
+GO_EASY_ON_ME = 1;
 
 ifeq ($(SIMULATOR),1)
 ARCHS = x86_64
