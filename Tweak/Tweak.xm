@@ -33,6 +33,7 @@
 -(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
     if ([[item type] isEqualToString:@"OpenPrefsItem"]) {
         NSString *urlString = [NSString stringWithFormat:@"prefs:root=%@", item.localizedTitle];
+        urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
         DLog(@"Should open %@", urlString);
         NSURL*url=[NSURL URLWithString:urlString];
 
