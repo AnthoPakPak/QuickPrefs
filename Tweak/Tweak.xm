@@ -70,7 +70,7 @@ static BOOL tweakShouldLoad() {
         if (executablePath) {
             NSString *processName = [executablePath lastPathComponent];
             DLog(@"Processname : %@", processName);
-            BOOL isApplication = [executablePath rangeOfString:@"/Application/"].location != NSNotFound || [executablePath rangeOfString:@"/Applications/"].location != NSNotFound;
+            // BOOL isApplication = [executablePath rangeOfString:@"/Application/"].location != NSNotFound || [executablePath rangeOfString:@"/Applications/"].location != NSNotFound;
             BOOL isSpringBoard = [processName isEqualToString:@"SpringBoard"];
             BOOL isFileProvider = [[processName lowercaseString] rangeOfString:@"fileprovider"].location != NSNotFound;
             BOOL skip = [processName isEqualToString:@"AdSheet"]
@@ -79,7 +79,7 @@ static BOOL tweakShouldLoad() {
                         || [processName isEqualToString:@"MessagesNotificationViewService"]
                         || [processName isEqualToString:@"PassbookUIService"]
                         || [executablePath rangeOfString:@".appex/"].location != NSNotFound;
-            if (!isFileProvider && (isSpringBoard || isApplication) && !skip) {
+            if (!isFileProvider && isSpringBoard && !skip) {
                 shouldLoad = YES;
             }
         }
