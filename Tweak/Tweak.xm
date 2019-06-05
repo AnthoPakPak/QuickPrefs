@@ -1,7 +1,7 @@
 #import "Tweak.h"
 
 
-%group EasyOpenTweakPrefs
+%group QuickPrefs
 
 
 %hook SBUIAppIconForceTouchControllerDataProvider
@@ -57,7 +57,7 @@
 
 %end //hook SBUIAction
 
-%end //end group EasyOpenTweakPrefs
+%end //end group QuickPrefs
 
 
 static BOOL tweakShouldLoad() {
@@ -90,9 +90,9 @@ static BOOL tweakShouldLoad() {
 
 %ctor {
     if (!tweakShouldLoad()) {
-        NSLog(@"EasyOpenTweakPrefs: shouldn't run in this process");
+        NSLog(@"QuickPrefs: shouldn't run in this process");
         return;
     }
 
-    %init(EasyOpenTweakPrefs);
+    %init(QuickPrefs);
 }

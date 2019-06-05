@@ -9,7 +9,7 @@ endif
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = EasyOpenTweakPrefs
+TWEAK_NAME = QuickPrefs
 $(TWEAK_NAME)_FILES = Tweak.xm
 
 
@@ -25,9 +25,9 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 
 after-all::
-	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Build success' -i 'tick' -d '1'
+	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Build success' -i 'tick' -d '1' &
 ifeq ($(SIMULATOR),1)
 	rm /opt/simject/$(TWEAK_NAME).dylib
-	cp ~/Documents/Programmation/iOSTweaks/tweaks/EasyOpenTweakPrefs/.theos/obj/iphone_simulator/debug/$(TWEAK_NAME).dylib /opt/simject/
+	cp ~/Documents/Programmation/iOSTweaks/tweaks/QuickPrefs/.theos/obj/iphone_simulator/debug/$(TWEAK_NAME).dylib /opt/simject/
 	~/Documents/Programmation/iOSTweaks/simject/bin/respring_simulator
 endif

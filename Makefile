@@ -20,16 +20,6 @@ include $(THEOS_MAKE_PATH)/aggregate.mk
 
 after-install::
 ifeq ($(RESPRING),1)
-	# install.exec "killall SpringBoard"
-	
-	# install.exec "killall MobileSafari"
-	# install.exec "open com.apple.mobilesafari"
-
-	# install.exec "killall Facebook"
-	# install.exec "open com.facebook.Facebook"
-
-	#install.exec "killall YouTube"
-	#install.exec "open com.google.ios.youtube"
-
+	install.exec "killall SpringBoard"
 endif
 	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Install success' -i 'tick' -d '1'
