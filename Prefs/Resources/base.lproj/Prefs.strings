@@ -1,0 +1,13 @@
+{
+  "ENABLED" = "Enabled";
+  "ENABLED_FOOTER" = "All changes are applied immediately.";
+
+  "ITEMS_NAMES" = "ITEMS NAMES";
+  "ITEMS_NAMES_FOOTER" = "Set name of up to 4 tweaks, with the exact same name as they show on your Settings page. You must respect case.
+Respring shouldn't be require if you use the Return key after setting the name.";
+  "TWEAK_NAME" = "Tweak name";
+
+  "RESPRING" = "Respring (not always required)";
+  "DONATE" = "Donate";
+  "SUPPORT_ME" = "You like my work and want to support me?";
+}

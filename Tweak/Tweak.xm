@@ -1,7 +1,34 @@
 #import "Tweak.h"
 
+#ifndef SIMULATOR
+HBPreferences *preferences;
+#endif
+
+BOOL enabled;
+NSString *item1;
+NSString *item2;
+NSString *item3;
+NSString *item4;
+
+NSMutableArray<NSString*> *itemsList;
 
 %group QuickPrefs
+
+
+// static UIViewController* topMostController() {
+//     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+//     while (topController.presentedViewController) {
+//         topController = topController.presentedViewController;
+//     }
+    
+//     return topController;
+// }
+
+// static void showAlert(NSString *myMessage) {
+//     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:myMessage preferredStyle:UIAlertControllerStyleAlert];
+//     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+//     [topMostController() presentViewController:alertController animated:YES completion:nil];
+// }
 
 
 %hook SBUIAppIconForceTouchControllerDataProvider
@@ -13,7 +40,8 @@
     NSMutableArray *orig = [%orig mutableCopy];
     if (!orig) orig = [NSMutableArray new];
 
-    NSArray<NSString*> *itemsList = @[@"VideoSwipes", @"Sleepizy", @"PanCake"];
+    DLog(@"itemsList %@", itemsList);
+    // itemsList = @[@"VideoSwipes", @"Sleepizy", @"PanCake", @"QuickPrefs"];
 
     for (NSString *itemName in itemsList) {
         SBSApplicationShortcutItem *item = [[%c(SBSApplicationShortcutItem) alloc] init];
@@ -37,7 +65,11 @@
         DLog(@"Should open %@", urlString);
         NSURL*url=[NSURL URLWithString:urlString];
 
-        [[UIApplication sharedApplication] _openURL:url];
+        // if ([[UIApplication sharedApplication] canOpenURL:url]) { //return YES whatever the name is
+            [[UIApplication sharedApplication] _openURL:url];
+        // } else {
+        //     showAlert(@"QuickPrefs cannot open this item. Please double check the name of the tweak and retry.");
+        // }
     }
 
     %orig;
@@ -89,11 +121,40 @@ static BOOL tweakShouldLoad() {
     return shouldLoad;
 }
 
+static void addItemToItemsListIfNotNil(NSString *itemName) {
+    NSString *trimmedItemName = [itemName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([trimmedItemName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0) {
+        [itemsList addObject:trimmedItemName];
+    }
+}
+
+static void reloadItemsList() {
+    DLog(@"reloadItemsList");
+    itemsList = @[].mutableCopy;
+    addItemToItemsListIfNotNil(item1);
+    addItemToItemsListIfNotNil(item2);
+    addItemToItemsListIfNotNil(item3);
+    addItemToItemsListIfNotNil(item4);
+
+    DLog(@"new itemsList %@", itemsList);
+}
+
 %ctor {
     if (!tweakShouldLoad()) {
-        NSLog(@"QuickPrefs: shouldn't run in this process");
+        DLog(@"QuickPrefs: shouldn't run in this process");
         return;
     }
+
+    preferences = [[HBPreferences alloc] initWithIdentifier:@"com.anthopak.quickprefs"];
+    [preferences registerBool:&enabled default:YES forKey:@"enabled"];
+    [preferences registerObject:&item1 default:nil forKey:@"item1"];
+    [preferences registerObject:&item2 default:nil forKey:@"item2"];
+    [preferences registerObject:&item3 default:nil forKey:@"item3"];
+    [preferences registerObject:&item4 default:nil forKey:@"item4"];
+
+    reloadItemsList();
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItemsList, (CFStringRef)@"com.anthopak.quickprefs/ReloadPrefs", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
 
     %init(QuickPrefs);
 }

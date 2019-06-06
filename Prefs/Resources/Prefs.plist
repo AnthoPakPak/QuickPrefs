@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBImageTableCell</string>
+			<key>icon</key>
+			<string>header.png</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>footerText</key>
+			<string>ENABLED_FOOTER</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>ENABLED</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>ITEMS_NAMES</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>footerText</key>
+			<string>ITEMS_NAMES_FOOTER</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 1</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>		
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item1</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 2</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item2</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 3</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>		
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item3</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 4</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item4</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+ 		<dict>
+			<key>action</key>
+			<string>respring:</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>RESPRING</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>footerText</key>
+			<string>Version 1.0</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTwitterCell</string>
+			<key>label</key>
+			<string>AnthoPak</string>
+			<key>user</key>
+			<string>AnthoPak</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>DONATE</string>
+			<key>subtitle</key>
+			<string>SUPPORT_ME</string>
+			<key>url</key>
+			<string>https://bit.ly/AnthoPakDonate</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>QuickPrefs</string>
+</dict>
+</plist>

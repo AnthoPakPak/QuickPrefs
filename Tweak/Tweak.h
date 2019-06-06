@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
-
+#ifndef SIMULATOR
+#import <Cephei/HBPreferences.h>
+#endif
 
 #ifdef DEBUG
 	#define DLog(fmt, ...) NSLog((fmt), ##__VA_ARGS__);

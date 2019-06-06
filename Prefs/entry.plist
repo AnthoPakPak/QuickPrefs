@@ -1,0 +1,10 @@
+{
+    entry = {
+		bundle = QuickPrefsPrefs;
+		cell = PSLinkCell;
+		detail = QPPrefsListController;
+		isController = 1;
+		label = QuickPrefs;
+		icon = icon.png;
+    };
+}

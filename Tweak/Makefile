@@ -16,6 +16,7 @@ $(TWEAK_NAME)_FILES = Tweak.xm
 ifeq ($(SIMULATOR),1)
 ADDITIONAL_OBJCFLAGS = -fobjc-arc -DSIMULATOR=1
 else
+$(TWEAK_NAME)_EXTRA_FRAMEWORKS += Cephei
 ADDITIONAL_OBJCFLAGS = -fobjc-arc
 endif
 

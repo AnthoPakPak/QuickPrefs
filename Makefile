@@ -14,12 +14,12 @@ endif
 
 include $(THEOS)/makefiles/common.mk
 
-SUBPROJECTS += Tweak
+SUBPROJECTS += Tweak Prefs
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 after-install::
 ifeq ($(RESPRING),1)
-	install.exec "killall SpringBoard"
+	# install.exec "killall SpringBoard"
 endif
 	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Install success' -i 'tick' -d '1'
