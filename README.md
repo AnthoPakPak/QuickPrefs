@@ -11,7 +11,7 @@ QuickPrefs is a little -yet useful- tweak that lets you quickly access tweak pre
 
 **Available for free on BigBoss.**
 
-Feel free to follow me on Twitter <a href="">@AnthoPak</a> to get live updates!
+Feel free to follow me on Twitter <a href="https://twitter.com/AnthoPak">@AnthoPak</a> to get live updates!
 
 <img src="https://i.imgur.com/fgGn4jx.png" width="300">
 
