@@ -11,11 +11,7 @@
 	#define DLog(...)
 #endif
 
-#define PLIST_FILE @"/var/mobile/Library/Preferences/com.anthopak.quickprefs.plist"
-
-
 
 @interface QPPrefsListController : HBRootListController<UITextFieldDelegate>
-// - (void)applySettings:(id)sender;
     - (void)respring:(id)sender;
 @end

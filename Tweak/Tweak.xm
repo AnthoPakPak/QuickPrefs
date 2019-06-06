@@ -9,6 +9,7 @@ NSString *item1;
 NSString *item2;
 NSString *item3;
 NSString *item4;
+BOOL quickPrefsItemsAboveStockItems;
 
 NSMutableArray<NSString*> *itemsList;
 
@@ -41,20 +42,25 @@ NSMutableArray<NSString*> *itemsList;
     if (!orig) orig = [NSMutableArray new];
 
     DLog(@"itemsList %@", itemsList);
-    // itemsList = @[@"VideoSwipes", @"Sleepizy", @"PanCake", @"QuickPrefs"];
 
     for (NSString *itemName in itemsList) {
         SBSApplicationShortcutItem *item = [[%c(SBSApplicationShortcutItem) alloc] init];
         item.localizedTitle = itemName;
         item.bundleIdentifierToLaunch = bundleId;
         item.type = @"OpenPrefsItem";
-        [orig insertObject:item atIndex:0];
+
+        if (quickPrefsItemsAboveStockItems) {
+            [orig addObject:item];
+        } else {
+            [orig insertObject:item atIndex:0];
+        }
     }
 
     return orig;
 }
 
 %end //hook SBUIAppIconForceTouchControllerDataProvider
+
 
 %hook SBUIAppIconForceTouchController
 
@@ -137,6 +143,8 @@ static void reloadItemsList() {
     addItemToItemsListIfNotNil(item3);
     addItemToItemsListIfNotNil(item4);
 
+    if (quickPrefsItemsAboveStockItems) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
+
     DLog(@"new itemsList %@", itemsList);
 }
 
@@ -152,6 +160,7 @@ static void reloadItemsList() {
     [preferences registerObject:&item2 default:nil forKey:@"item2"];
     [preferences registerObject:&item3 default:nil forKey:@"item3"];
     [preferences registerObject:&item4 default:nil forKey:@"item4"];
+    [preferences registerBool:&quickPrefsItemsAboveStockItems default:NO forKey:@"quickPrefsItemsAboveStockItems"];
 
     reloadItemsList();
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItemsList, (CFStringRef)@"com.anthopak.quickprefs/ReloadPrefs", NULL, (CFNotificationSuspensionBehavior)kNilOptions);

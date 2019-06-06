@@ -134,6 +134,30 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>MISCELLANEOUS</string>
+			<key>isStaticText</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Show items above stock ones</string>
+			<key>key</key>
+			<string>quickPrefsItemsAboveStockItems</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>isStaticText</key>
 			<true/>
 			<key>footerText</key>
