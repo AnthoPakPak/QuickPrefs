@@ -138,12 +138,14 @@ static void addItemToItemsListIfNotNil(NSString *itemName) {
 static void reloadItemsList() {
     DLog(@"reloadItemsList");
     itemsList = @[].mutableCopy;
-    addItemToItemsListIfNotNil(item1);
-    addItemToItemsListIfNotNil(item2);
-    addItemToItemsListIfNotNil(item3);
-    addItemToItemsListIfNotNil(item4);
+    if (enabled) {
+        addItemToItemsListIfNotNil(item1);
+        addItemToItemsListIfNotNil(item2);
+        addItemToItemsListIfNotNil(item3);
+        addItemToItemsListIfNotNil(item4);
 
-    if (quickPrefsItemsAboveStockItems) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
+        if (quickPrefsItemsAboveStockItems) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
+    }
 
     DLog(@"new itemsList %@", itemsList);
 }
