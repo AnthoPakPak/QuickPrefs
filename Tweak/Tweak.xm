@@ -47,13 +47,9 @@ NSMutableArray<NSString*> *itemsList;
         SBSApplicationShortcutItem *item = [[%c(SBSApplicationShortcutItem) alloc] init];
         item.localizedTitle = itemName;
         item.bundleIdentifierToLaunch = bundleId;
-        item.type = @"OpenPrefsItem";
+        item.type = @"QuickPrefsItem";
 
-        if (quickPrefsItemsAboveStockItems) {
-            [orig addObject:item];
-        } else {
-            [orig insertObject:item atIndex:0];
-        }
+        quickPrefsItemsAboveStockItems ? [orig addObject:item] : [orig insertObject:item atIndex:0];
     }
 
     return orig;
@@ -65,13 +61,13 @@ NSMutableArray<NSString*> *itemsList;
 %hook SBUIAppIconForceTouchController
 
 -(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
-    if ([[item type] isEqualToString:@"OpenPrefsItem"]) {
+    if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
         NSString *urlString = [NSString stringWithFormat:@"prefs:root=%@", item.localizedTitle];
         urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
         DLog(@"Should open %@", urlString);
         NSURL*url=[NSURL URLWithString:urlString];
 
-        // if ([[UIApplication sharedApplication] canOpenURL:url]) { //return YES whatever the name is
+        // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
             [[UIApplication sharedApplication] _openURL:url];
         // } else {
         //     showAlert(@"QuickPrefs cannot open this item. Please double check the name of the tweak and retry.");
@@ -87,10 +83,6 @@ NSMutableArray<NSString*> *itemsList;
 %hook SBUIAction
 
 -(id)initWithTitle:(id)title subtitle:(id)arg2 image:(id)image badgeView:(id)arg4 handler:(/*^block*/id)arg5 {
-    // if ([title isEqualToString:@"TweakName"]) {
-    //     image = [[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/Tweak.bundle/forcetouch.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    // }
-
     return %orig;
 }
 
@@ -101,7 +93,6 @@ NSMutableArray<NSString*> *itemsList;
 
 static BOOL tweakShouldLoad() {
     // https://www.reddit.com/r/jailbreak/comments/4yz5v5/questionremote_messages_not_enabling/d6rlh88/
-    BOOL shouldLoad = NO;
     NSArray *args = [[NSClassFromString(@"NSProcessInfo") processInfo] arguments];
     NSUInteger count = args.count;
     if (count != 0) {
@@ -109,22 +100,11 @@ static BOOL tweakShouldLoad() {
         if (executablePath) {
             NSString *processName = [executablePath lastPathComponent];
             DLog(@"Processname : %@", processName);
-            // BOOL isApplication = [executablePath rangeOfString:@"/Application/"].location != NSNotFound || [executablePath rangeOfString:@"/Applications/"].location != NSNotFound;
-            BOOL isSpringBoard = [processName isEqualToString:@"SpringBoard"];
-            BOOL isFileProvider = [[processName lowercaseString] rangeOfString:@"fileprovider"].location != NSNotFound;
-            BOOL skip = [processName isEqualToString:@"AdSheet"]
-                        || [processName isEqualToString:@"CoreAuthUI"]
-                        || [processName isEqualToString:@"InCallService"]
-                        || [processName isEqualToString:@"MessagesNotificationViewService"]
-                        || [processName isEqualToString:@"PassbookUIService"]
-                        || [executablePath rangeOfString:@".appex/"].location != NSNotFound;
-            if (!isFileProvider && isSpringBoard && !skip) {
-                shouldLoad = YES;
-            }
+            return [processName isEqualToString:@"SpringBoard"];
         }
     }
 
-    return shouldLoad;
+    return NO;
 }
 
 static void addItemToItemsListIfNotNil(NSString *itemName) {
@@ -152,7 +132,7 @@ static void reloadItemsList() {
 
 %ctor {
     if (!tweakShouldLoad()) {
-        DLog(@"QuickPrefs: shouldn't run in this process");
+        DLog(@"QuickPrefs shouldn't run in this process");
         return;
     }
 
