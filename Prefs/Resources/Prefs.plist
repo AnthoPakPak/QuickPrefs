@@ -181,6 +181,16 @@
 			<key>url</key>
 			<string>https://bit.ly/AnthoPakDonate</string>
 		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>GITHUB</string>
+			<key>subtitle</key>
+			<string>CHECK_THE_CODE</string>
+			<key>url</key>
+			<string>https://github.com/AnthoPakPak/QuickPrefs</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>QuickPrefs</string>

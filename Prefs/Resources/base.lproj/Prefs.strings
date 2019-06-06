@@ -10,4 +10,6 @@ Respring shouldn't be require if you use the Return key after setting the name."
   "RESPRING" = "Respring (not always required)";
   "DONATE" = "Donate";
   "SUPPORT_ME" = "You like my work and want to support me?";
+  "GITHUB" = "GitHub";
+  "CHECK_THE_CODE" = "Check out the code!";
 }
