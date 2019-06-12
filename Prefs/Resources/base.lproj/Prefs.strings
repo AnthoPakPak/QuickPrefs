@@ -18,7 +18,7 @@ Respring shouldn't be require if you use the Return key after setting the name."
 
 You can write the name of a tweak to directly open its preferences pane. Custom paths are also supported to allow open as many Settings.app preferences panes as possible. You can write items names as paths to dive into subcategories of Settings.app categories.
 
-For stock Settings panes, the values to use for the path are not straightforward. You should refer to the spreadsheet linked below to get the correct values. If you see \"Prefs:root=General&path=USAGE\" you should write \"General/USAGE\" in item name. The spreadsheet isn't exhaustive, you can make some tries with other values but chances are it won't work (always try with english values).";
+For stock Settings panes, the values to use for the path are not straightforward. You should refer to the spreadsheet linked below to get the correct values. If you see \"Prefs:root=General&path=Keyboard\" you should write \"General/Keyboard\" in item name. The spreadsheet isn't exhaustive, you can make some tries with other values but chances are it won't work (always try with english values).";
   
   "SETTINGS_URLS_SPREADSHEET" = "Stock settings URLs spreadsheet";
   "SETTINGS_URLS_SPREADSHEET_SUBTITLE" = "Get values for some stock Settings panes";
