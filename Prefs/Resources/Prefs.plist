@@ -121,6 +121,78 @@
 			<key>PostNotification</key>
 			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 5</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item5</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 6</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item6</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 7</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item7</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 8</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item8</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
  		<dict>
 			<key>action</key>
 			<string>respring:</string>
@@ -138,6 +210,8 @@
 			<string>MISCELLANEOUS</string>
 			<key>isStaticText</key>
 			<true/>
+			<key>footerText</key>
+			<string>MISCELLANEOUS_FOOTER</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -150,6 +224,20 @@
 			<string>Show items above stock ones</string>
 			<key>key</key>
 			<string>quickPrefsItemsAboveStockItems</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Remove stock items</string>
+			<key>key</key>
+			<string>removeStockItems</string>
 			<key>PostNotification</key>
 			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>

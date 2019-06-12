@@ -9,7 +9,12 @@ NSString *item1;
 NSString *item2;
 NSString *item3;
 NSString *item4;
+NSString *item5;
+NSString *item6;
+NSString *item7;
+NSString *item8;
 BOOL quickPrefsItemsAboveStockItems;
+BOOL removeStockItems;
 
 NSMutableArray<NSString*> *itemsList;
 
@@ -38,7 +43,7 @@ NSMutableArray<NSString*> *itemsList;
     NSString *bundleId = [self applicationBundleIdentifier];
     if (![bundleId isEqualToString:@"com.apple.Preferences"]) return %orig;
 
-    NSMutableArray *orig = [%orig mutableCopy];
+    NSMutableArray *orig = removeStockItems ? @[].mutableCopy : [%orig mutableCopy];
     if (!orig) orig = [NSMutableArray new];
 
     DLog(@"itemsList %@", itemsList);
@@ -164,6 +169,10 @@ static void reloadItemsList() {
         addItemToItemsListIfNotNil(item2);
         addItemToItemsListIfNotNil(item3);
         addItemToItemsListIfNotNil(item4);
+        addItemToItemsListIfNotNil(item5);
+        addItemToItemsListIfNotNil(item6);
+        addItemToItemsListIfNotNil(item7);
+        addItemToItemsListIfNotNil(item8);
 
         if (quickPrefsItemsAboveStockItems) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
     }
@@ -183,7 +192,12 @@ static void reloadItemsList() {
     [preferences registerObject:&item2 default:nil forKey:@"item2"];
     [preferences registerObject:&item3 default:nil forKey:@"item3"];
     [preferences registerObject:&item4 default:nil forKey:@"item4"];
+    [preferences registerObject:&item5 default:nil forKey:@"item5"];
+    [preferences registerObject:&item6 default:nil forKey:@"item6"];
+    [preferences registerObject:&item7 default:nil forKey:@"item7"];
+    [preferences registerObject:&item8 default:nil forKey:@"item8"];
     [preferences registerBool:&quickPrefsItemsAboveStockItems default:NO forKey:@"quickPrefsItemsAboveStockItems"];
+    [preferences registerBool:&removeStockItems default:NO forKey:@"removeStockItems"];
 
     reloadItemsList();
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItemsList, (CFStringRef)@"com.anthopak.quickprefs/ReloadPrefs", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
