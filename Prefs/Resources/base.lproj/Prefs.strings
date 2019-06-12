@@ -3,10 +3,25 @@
   "ENABLED_FOOTER" = "All changes are applied immediately.";
 
   "ITEMS_NAMES" = "ITEMS NAMES";
-  "ITEMS_NAMES_FOOTER" = "Set name of up to 4 tweaks, with the exact same name as they show on your Settings page. You must respect letter case.
+  "ITEMS_NAMES_FOOTER" = "Set name of up to 4 tweaks, with the exact same name as they show on your Settings page. You can also use custom paths (see below). You must respect letter case.
 Respring shouldn't be require if you use the Return key after setting the name.";
-  "TWEAK_NAME" = "Tweak name";
+  "TWEAK_NAME" = "Tweak name or path";
 
+  "EXAMPLES_AND_CUSTOM_URLS" = "EXAMPLES AND CUSTOM PATHS";
+  "EXAMPLES_AND_CUSTOM_URLS_FOOTER" = "Here are some examples of values you can use:
+- QuickPrefs
+- Tweaks/QuickPrefs (if you have shuffle or PreferenceOrganizer2)
+- General/Keyboard
+- BATTERY_USAGE
+
+You can write the name of a tweak to directly open its preferences pane. Custom paths are also supported to allow open as many Settings.app preferences panes as possible. You can write items names as paths to dive into subcategories of Settings.app categories.
+
+For stock Settings panes, the values to use for the path are not straightforward. You should refer to the spreadsheet linked below to get the correct values. If you see \"Prefs:root=General&path=USAGE\" you should write \"General/USAGE\" in item name. The spreadsheet isn't exhaustive, you can make some tries with other values but chances are it won't work (always try with english values).";
+  
+  "SETTINGS_URLS_SPREADSHEET" = "Stock settings URLs spreadsheet";
+  "SETTINGS_URLS_SPREADSHEET_SUBTITLE" = "Get values for some stock Settings panes";
+
+  "VERSION_NUMBER" = "Version 1.1";
   "RESPRING" = "Respring (not always required)";
   "DONATE" = "Donate";
   "SUPPORT_ME" = "You like my work and want to support me?";

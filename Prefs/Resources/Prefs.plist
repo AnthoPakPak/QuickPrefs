@@ -158,10 +158,37 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>EXAMPLES_AND_CUSTOM_URLS</string>
 			<key>isStaticText</key>
 			<true/>
 			<key>footerText</key>
-			<string>Version 1.0</string>
+			<string>EXAMPLES_AND_CUSTOM_URLS_FOOTER</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>SETTINGS_URLS_SPREADSHEET</string>
+			<key>subtitle</key>
+			<string>SETTINGS_URLS_SPREADSHEET_SUBTITLE</string>
+			<key>url</key>
+			<string>https://bit.ly/iOSPreferencesUrlsSpreadsheet</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>footerText</key>
+			<string>VERSION_NUMBER</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
