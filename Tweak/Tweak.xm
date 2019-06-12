@@ -60,12 +60,29 @@ NSMutableArray<NSString*> *itemsList;
 
 %hook SBUIAppIconForceTouchController
 
+static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
+    NSArray *urlPathItems = [pathString componentsSeparatedByString:@"/"];
+
+    NSString *urlString = [NSString stringWithFormat:@"prefs:root=%@", urlPathItems[0]];
+
+    if (urlPathItems.count > 1) {
+        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&path=%@", urlPathItems[1]]];
+
+        if (urlPathItems.count > 2) {
+            urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"/%@", urlPathItems[2]]];
+        }
+    }
+
+    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+
+    return urlString;
+}
+
 -(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
     if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
-        NSString *urlString = [NSString stringWithFormat:@"prefs:root=%@", item.localizedTitle];
-        urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
         DLog(@"Should open %@", urlString);
-        NSURL*url=[NSURL URLWithString:urlString];
+        NSURL*url = [NSURL URLWithString:urlString];
 
         // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
             [[UIApplication sharedApplication] _openURL:url];
@@ -82,7 +99,31 @@ NSMutableArray<NSString*> *itemsList;
 
 %hook SBUIAction
 
+static NSString* getReadableTitleFromPathString(NSString *pathString) {
+    NSString *title = pathString;
+
+    //handle strings containing path
+    if ([title containsString:@"/"]) {
+        NSArray *urlPathItems = [title componentsSeparatedByString:@"/"];
+        title = urlPathItems[urlPathItems.count - 1];
+    }
+
+    //handle strings like BATTERY_USAGE
+    if ([title containsString:@"_"]) {
+        title = [title stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    }
+
+    BOOL isAllUppercase = [title rangeOfCharacterFromSet:[NSCharacterSet lowercaseLetterCharacterSet]].location == NSNotFound;
+    if (isAllUppercase) {
+        title = [title capitalizedString];
+    }
+
+    return title;
+}
+
 -(id)initWithTitle:(id)title subtitle:(id)arg2 image:(id)image badgeView:(id)arg4 handler:(/*^block*/id)arg5 {
+    title = getReadableTitleFromPathString(title);
+
     return %orig;
 }
 
