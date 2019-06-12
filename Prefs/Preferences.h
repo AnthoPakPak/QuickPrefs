@@ -11,6 +11,10 @@
 	#define DLog(...)
 #endif
 
+#define PLIST_FILE @"/var/mobile/Library/Preferences/com.anthopak.quickprefs.plist"
+#define pref_getValue(key) [[NSDictionary dictionaryWithContentsOfFile:PLIST_FILE] valueForKey:key]
+#define pref_getBool(key) [pref_getValue(key) boolValue]
+#define pref_setValueForKey(value, key) [@{key:value} writeToFile:PLIST_FILE atomically:YES]
 
 @interface QPPrefsListController : HBRootListController<UITextFieldDelegate>
     - (void)respring:(id)sender;
