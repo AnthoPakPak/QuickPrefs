@@ -36,6 +36,13 @@ NSMutableArray<NSString*> *itemsList;
 //     [topMostController() presentViewController:alertController animated:YES completion:nil];
 // }
 
+static void respring() {
+    NSTask *t = [[NSTask alloc] init];
+    [t setLaunchPath:@"/usr/bin/killall"];
+    [t setArguments:[NSArray arrayWithObjects:@"backboardd", nil]];
+    [t launch];
+}
+
 
 %hook SBUIAppIconForceTouchControllerDataProvider
 
@@ -85,15 +92,21 @@ static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
 
 -(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
     if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
-        NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
-        DLog(@"Should open %@", urlString);
-        NSURL*url = [NSURL URLWithString:urlString];
 
-        // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
-            [[UIApplication sharedApplication] _openURL:url];
-        // } else {
-        //     showAlert(@"QuickPrefs cannot open this item. Please double check the name of the tweak and retry.");
-        // }
+        if ([item.localizedTitle isEqualToString:@"Respring"]) {
+            respring();
+        } else { //open pref pane
+            NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
+            DLog(@"Should open %@", urlString);
+
+            NSURL*url = [NSURL URLWithString:urlString];
+
+            // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
+                [[UIApplication sharedApplication] _openURL:url];
+            // } else {
+            //     showAlert(@"QuickPrefs cannot open this item. Please double check the name of the tweak and retry.");
+            // }
+        }
     }
 
     %orig;
