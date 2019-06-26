@@ -18,8 +18,14 @@ Feel free to follow me on Twitter <a href="https://twitter.com/AnthoPak">@AnthoP
 
 ## Changelog
 
-- **1.0**  
-Initial release
+**1.1**
+- Custom paths allowing to dive into all Settings.app panes
+- Support for shuffle and PreferenceOrganizer2
+- Increase the number of items to 8
+- Option to remove stock items
+
+**1.0**  
+- Initial release
 
 
 ## Licence
