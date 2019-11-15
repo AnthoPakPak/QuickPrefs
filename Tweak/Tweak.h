@@ -10,6 +10,8 @@
 	#define DLog(...)
 #endif
 
+#define IS_IOS13_AND_UP ([[UIDevice currentDevice].systemVersion floatValue] >= 13.0)
+
 @interface SBSApplicationShortcutItem : NSObject <NSCopying>
 
 @property (nonatomic,copy) NSString * type;
@@ -19,12 +21,23 @@
 
 @end
 
-
+//iOS 11/12 only
 @interface SBUIAppIconForceTouchControllerDataProvider : NSObject
 
 -(NSString *)applicationBundleIdentifier;
 
 @end 
+//end iOS 11/12 only
+
+
+//iOS 13 only
+@interface SBIconView : UIView
+
+-(id)applicationBundleIdentifier;
+-(id)applicationBundleIdentifierForShortcuts;
+
+@end
+//end iOS 13 only
 
 
 @interface UIApplication (Custom)

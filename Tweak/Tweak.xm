@@ -18,8 +18,6 @@ BOOL removeStockItems;
 
 NSMutableArray<NSString*> *itemsList;
 
-%group QuickPrefs
-
 
 // static UIViewController* topMostController() {
 //     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -43,35 +41,6 @@ static void respring() {
     [t launch];
 }
 
-
-%hook SBUIAppIconForceTouchControllerDataProvider
-
--(NSArray *)applicationShortcutItems {
-    NSString *bundleId = [self applicationBundleIdentifier];
-    if (![bundleId isEqualToString:@"com.apple.Preferences"]) return %orig;
-
-    NSMutableArray *orig = removeStockItems ? @[].mutableCopy : [%orig mutableCopy];
-    if (!orig) orig = [NSMutableArray new];
-
-    DLog(@"itemsList %@", itemsList);
-
-    for (NSString *itemName in itemsList) {
-        SBSApplicationShortcutItem *item = [[%c(SBSApplicationShortcutItem) alloc] init];
-        item.localizedTitle = itemName;
-        item.bundleIdentifierToLaunch = bundleId;
-        item.type = @"QuickPrefsItem";
-
-        quickPrefsItemsAboveStockItems ? [orig addObject:item] : [orig insertObject:item atIndex:0];
-    }
-
-    return orig;
-}
-
-%end //hook SBUIAppIconForceTouchControllerDataProvider
-
-
-%hook SBUIAppIconForceTouchController
-
 static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
     NSArray *urlPathItems = [pathString componentsSeparatedByString:@"/"];
 
@@ -90,32 +59,39 @@ static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
     return urlString;
 }
 
--(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
-    if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
+static NSArray<SBSApplicationShortcutItem*>* addItemsToStockItems(NSArray<SBSApplicationShortcutItem*>* stockItems) {
+    NSMutableArray *stockAndCustomItems = removeStockItems ? @[].mutableCopy : [stockItems mutableCopy];
+    if (!stockAndCustomItems) stockAndCustomItems = [NSMutableArray new];
 
-        if ([item.localizedTitle isEqualToString:@"Respring"]) {
-            respring();
-        } else { //open pref pane
-            NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
-            DLog(@"Should open %@", urlString);
+    DLog(@"itemsList %@", itemsList);
 
-            NSURL*url = [NSURL URLWithString:urlString];
+    for (NSString *itemName in itemsList) {
+        SBSApplicationShortcutItem *item = [[%c(SBSApplicationShortcutItem) alloc] init];
+        item.localizedTitle = itemName;
+        item.bundleIdentifierToLaunch = @"com.apple.Preferences";
+        item.type = @"QuickPrefsItem";
 
-            // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
-                [[UIApplication sharedApplication] _openURL:url];
-            // } else {
-            //     showAlert(@"QuickPrefs cannot open this item. Please double check the name of the tweak and retry.");
-            // }
-        }
+        quickPrefsItemsAboveStockItems ? [stockAndCustomItems addObject:item] : [stockAndCustomItems insertObject:item atIndex:0];
     }
-
-    %orig;
+    return stockAndCustomItems;
 }
 
-%end //hook SBUIAppIconForceTouchController
+static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
+    if ([item.localizedTitle isEqualToString:@"Respring"]) {
+        respring();
+    } else { //open pref pane
+        NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
+        DLog(@"Should open %@", urlString);
 
+        NSURL*url = [NSURL URLWithString:urlString];
 
-%hook SBUIAction
+        // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
+            [[UIApplication sharedApplication] _openURL:url];
+        // } else {
+        //     showAlert(@"QuickPrefs cannot open this item. Please double check the name of the tweak and retry.");
+        // }
+    }
+}
 
 static NSString* getReadableTitleFromPathString(NSString *pathString) {
     NSString *title = pathString;
@@ -139,6 +115,37 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
     return title;
 }
 
+
+%group iOS11_12
+
+%hook SBUIAppIconForceTouchControllerDataProvider
+
+-(NSArray *)applicationShortcutItems {
+    NSString *bundleId = [self applicationBundleIdentifier];
+    if (![bundleId isEqualToString:@"com.apple.Preferences"]) return %orig;
+
+    NSArray<SBSApplicationShortcutItem*> *stockAndCustomItems = addItemsToStockItems(%orig);
+    return stockAndCustomItems;
+}
+
+%end //hook SBUIAppIconForceTouchControllerDataProvider
+
+
+%hook SBUIAppIconForceTouchController
+
+-(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
+    if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
+        activateQuickPrefsAction(item);
+    }
+
+    %orig;
+}
+
+%end //hook SBUIAppIconForceTouchController
+
+
+%hook SBUIAction
+
 -(id)initWithTitle:(id)title subtitle:(id)arg2 image:(id)image badgeView:(id)arg4 handler:(/*^block*/id)arg5 {
     title = getReadableTitleFromPathString(title);
 
@@ -147,7 +154,49 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
 
 %end //hook SBUIAction
 
-%end //end group QuickPrefs
+%end //end group iOS11_12
+
+
+%group iOS13_up
+
+%hook SBIconView
+
+-(NSArray *)applicationShortcutItems {
+    NSString *bundleId;
+    if ([self respondsToSelector:@selector(applicationBundleIdentifier)]) {
+        bundleId = [self applicationBundleIdentifier]; //iOS 13.1.3 (limneos)
+    } else if ([self respondsToSelector:@selector(applicationBundleIdentifierForShortcuts)]) {
+        bundleId = [self applicationBundleIdentifierForShortcuts]; //iOS 13.2.2 (my test iPhone)
+    }
+    if (![bundleId isEqualToString:@"com.apple.Preferences"]) return %orig;
+
+    NSArray<SBSApplicationShortcutItem*> *stockAndCustomItems = addItemsToStockItems(%orig);
+    return stockAndCustomItems;
+}
+
++(void)activateShortcut:(SBSApplicationShortcutItem*)item withBundleIdentifier:(id)arg2 forIconView:(id)arg3 {
+    DLog(@"activateShortcut %@ | %@ | %@", item, arg2, arg3);
+    if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
+        activateQuickPrefsAction(item);
+    }
+
+    %orig;
+}
+
+%end //hook SBIconView
+
+
+%hook _UIContextMenuActionView
+
+-(id)initWithTitle:(id)title subtitle:(id)arg2 image:(id)arg3 {
+    title = getReadableTitleFromPathString(title);
+
+    return %orig;
+}
+
+%end //hook SBUIAction
+
+%end //end group iOS13_up
 
 
 static BOOL tweakShouldLoad() {
@@ -215,5 +264,9 @@ static void reloadItemsList() {
     reloadItemsList();
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItemsList, (CFStringRef)@"com.anthopak.quickprefs/ReloadPrefs", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
 
-    %init(QuickPrefs);
+    if (IS_IOS13_AND_UP) {
+        %init(iOS13_up);
+    } else {
+        %init(iOS11_12);
+    }
 }
