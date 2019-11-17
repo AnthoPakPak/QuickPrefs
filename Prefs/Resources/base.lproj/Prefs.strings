@@ -24,7 +24,7 @@ For stock Settings panes, the values to use for the path are not straightforward
   "SETTINGS_URLS_SPREADSHEET" = "Stock settings URLs spreadsheet";
   "SETTINGS_URLS_SPREADSHEET_SUBTITLE" = "Get values for some stock Settings panes";
 
-  "VERSION_NUMBER" = "Version 1.1";
+  "VERSION_NUMBER" = "Version 1.2";
   "RESPRING" = "Respring (not always required)";
   "DONATE" = "Donate";
   "SUPPORT_ME" = "You like my work and want to support me?";

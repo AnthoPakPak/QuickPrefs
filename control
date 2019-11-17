@@ -1,9 +1,9 @@
 Package: com.anthopak.quickprefs
 Name: QuickPrefs
 Depends: mobilesubstrate
-Version: 1.1
+Version: 1.2
 Architecture: iphoneos-arm
-Description: Quickly access tweak prefs with Force Touch
+Description: Quickly access tweak prefs with Force/Haptic Touch
 Maintainer: AnthoPak
 Author: AnthoPak
 Section: Tweaks
