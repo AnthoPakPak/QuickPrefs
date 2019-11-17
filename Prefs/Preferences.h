@@ -12,9 +12,9 @@
 #endif
 
 #define PLIST_FILE @"/var/mobile/Library/Preferences/com.anthopak.quickprefs.plist"
-#define pref_getValue(key) [[NSDictionary dictionaryWithContentsOfFile:PLIST_FILE] valueForKey:key]
-#define pref_getBool(key) [pref_getValue(key) boolValue]
-#define pref_setValueForKey(value, key) [@{key:value} writeToFile:PLIST_FILE atomically:YES]
+#define hb_prefs [[HBPreferences alloc] initWithIdentifier:@"com.anthopak.quickprefs"]
+#define pref_setBoolForKey(bool, key) [hb_prefs setBool:bool forKey:key]
+#define pref_getBool(key) [hb_prefs boolForKey:key]
 
 @interface QPPrefsListController : HBRootListController<UITextFieldDelegate>
     - (void)respring:(id)sender;

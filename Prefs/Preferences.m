@@ -13,7 +13,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
 
     if (self) {
         HBAppearanceSettings *appearanceSettings = [[HBAppearanceSettings alloc] init];
-        appearanceSettings.tintColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:1];
+        appearanceSettings.tintColor = [UIColor colorWithRed:0.49 green:0.498 blue:0.518 alpha:1];
         appearanceSettings.tableViewCellSeparatorColor = [UIColor colorWithWhite:0 alpha:0];
         self.hb_appearanceSettings = appearanceSettings;
     }
@@ -59,7 +59,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
 
 -(BOOL) shouldShowNoticeForShuffle {
     if (!pref_getBool(@"shuffleNoticeHasAlreadyBeShown") && [[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/com.creaturecoding.shuffle.list"]) {
-        pref_setValueForKey(@"YES", @"shuffleNoticeHasAlreadyBeShown");
+        pref_setBoolForKey(YES, @"shuffleNoticeHasAlreadyBeShown");
         return YES;
     }
     return NO;
@@ -67,7 +67,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
 
 -(BOOL) shouldShowNoticeForPreferenceOrganizer {
     if (!pref_getBool(@"preferenceOrganizerNoticeHasAlreadyBeShown") && [[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/net.angelxwind.preferenceorganizer2.list"]) {
-        pref_setValueForKey(@"YES", @"preferenceOrganizerNoticeHasAlreadyBeShown");
+        pref_setBoolForKey(YES, @"preferenceOrganizerNoticeHasAlreadyBeShown");
         return YES;
     }
     return NO;
