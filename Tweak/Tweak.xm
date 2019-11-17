@@ -35,9 +35,22 @@ NSMutableArray<NSString*> *itemsList;
 // }
 
 static void respring() {
-    NSTask *t = [[NSTask alloc] init];
+    NSTask *t = [NSTask new];
     [t setLaunchPath:@"/usr/bin/killall"];
-    [t setArguments:[NSArray arrayWithObjects:@"backboardd", nil]];
+    [t setArguments:@[@"backboardd"]];
+    [t launch];
+}
+
+static void safeMode() {
+    NSTask *t = [NSTask new];
+    [t setLaunchPath:@"/usr/bin/killall"];
+    [t setArguments:@[@"-SEGV", @"SpringBoard"]];
+    [t launch];
+}
+
+static void uicache() {
+    NSTask *t = [NSTask new];
+    [t setLaunchPath:@"/usr/bin/uicache"];
     [t launch];
 }
 
@@ -77,8 +90,12 @@ static NSArray<SBSApplicationShortcutItem*>* addItemsToStockItems(NSArray<SBSApp
 }
 
 static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
-    if ([item.localizedTitle isEqualToString:@"Respring"]) {
+    if ([item.localizedTitle.lowercaseString isEqualToString:@"respring"]) {
         respring();
+    } else if ([item.localizedTitle.lowercaseString isEqualToString:@"safe mode"]) {
+        safeMode();
+    } else if ([item.localizedTitle.lowercaseString isEqualToString:@"uicache"]) {
+        uicache();
     } else { //open pref pane
         NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
         DLog(@"Should open %@", urlString);

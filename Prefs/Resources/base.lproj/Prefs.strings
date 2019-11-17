@@ -3,8 +3,9 @@
   "ENABLED_FOOTER" = "All changes are applied immediately.";
 
   "ITEMS_NAMES" = "ITEMS NAMES";
-  "ITEMS_NAMES_FOOTER" = "Set name of up to 8 tweaks, with the exact same name as they show on your Settings page. You can also use custom paths (see below). You must respect letter case.
-Respring shouldn't be require if you use the Return key after setting the name.";
+  "ITEMS_NAMES_FOOTER" = "- Set name of up to 8 tweaks, with the exact same name as they show on your Settings page. You can also use custom paths (see below). You must respect letter case.
+Respring shouldn't be require if you use the Return key after setting the name.
+- You can also use \"Respring\", \"Safe Mode\" and \"UICache\" to create items that will run said command.";
   "TWEAK_NAME" = "Tweak name or path";
 
   "MISCELLANEOUS_FOOTER" = "Starting from a certain number of items, you will have to hide stock items to make place for your items.";
