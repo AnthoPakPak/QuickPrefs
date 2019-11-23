@@ -28,7 +28,8 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 after-all::
 	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Build success' -i 'tick' -d '1' &
 ifeq ($(SIMULATOR),1)
-	rm /opt/simject/$(TWEAK_NAME).dylib
-	cp ~/Documents/Programmation/iOSTweaks/tweaks/QuickPrefs/.theos/obj/iphone_simulator/debug/$(TWEAK_NAME).dylib /opt/simject/
-	~/Documents/Programmation/iOSTweaks/simject/bin/respring_simulator
+	yes | cp ~/Documents/Programmation/iOSTweaks/tweaks/$(TWEAK_NAME)/Tweak/$(TWEAK_NAME).plist /opt/simject/
+	yes | cp ~/Documents/Programmation/iOSTweaks/tweaks/$(TWEAK_NAME)/.theos/obj/iphone_simulator/debug/$(TWEAK_NAME).dylib /opt/simject/
+	~/Documents/Programmation/iOSTweaks/simject/bin/resim
+
 endif

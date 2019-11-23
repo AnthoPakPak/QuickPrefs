@@ -3,7 +3,8 @@ export THEOS_DEVICE_IP=192.168.0.23
 export THEOS_DEVICE_PORT=22
 
 #FINALPACKAGE=1
-USB=1
+export SIMULATOR=1
+# USB=1
 
 ifeq ($(USB),1)
 	export THEOS_DEVICE_IP=localhost
@@ -13,7 +14,14 @@ endif
 
 include $(THEOS)/makefiles/common.mk
 
-SUBPROJECTS += Tweak Prefs
+ifeq ($(FINALPACKAGE),1)
+	SUBPROJECTS += Tweak Prefs
+else ifeq ($(SIMULATOR),1)
+	SUBPROJECTS = Tweak
+else
+	SUBPROJECTS += Tweak
+	SUBPROJECTS += Prefs
+endif
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
 

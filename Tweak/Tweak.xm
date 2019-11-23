@@ -265,6 +265,7 @@ static void reloadItemsList() {
         return;
     }
 
+#ifndef SIMULATOR
     preferences = [[HBPreferences alloc] initWithIdentifier:@"com.anthopak.quickprefs"];
     [preferences registerBool:&enabled default:YES forKey:@"enabled"];
     [preferences registerObject:&item1 default:nil forKey:@"item1"];
@@ -280,6 +281,11 @@ static void reloadItemsList() {
 
     reloadItemsList();
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItemsList, (CFStringRef)@"com.anthopak.quickprefs/ReloadPrefs", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
+#else
+    enabled = YES;
+    item1 = @"Test";
+    reloadItemsList();
+#endif
 
     if (IS_IOS13_AND_UP) {
         %init(iOS13_up);
