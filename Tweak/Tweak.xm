@@ -20,18 +20,18 @@ NSMutableArray<NSString*> *itemsList;
 
 
 // static UIViewController* topMostController() {
-//     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-//     while (topController.presentedViewController) {
-//         topController = topController.presentedViewController;
-//     }
+    // UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    // while (topController.presentedViewController) {
+        // topController = topController.presentedViewController;
+    // }
     
-//     return topController;
+    // return topController;
 // }
 
 // static void showAlert(NSString *myMessage) {
-//     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:myMessage preferredStyle:UIAlertControllerStyleAlert];
-//     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-//     [topMostController() presentViewController:alertController animated:YES completion:nil];
+    // UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:myMessage preferredStyle:UIAlertControllerStyleAlert];
+    // [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    // [topMostController() presentViewController:alertController animated:YES completion:nil];
 // }
 
 static void respring() {
@@ -53,6 +53,13 @@ static void uicache() {
     [t setLaunchPath:@"/usr/bin/uicache"];
     [t launch];
 }
+
+// static void urlopen(NSString* urlString) {
+    // NSTask *t = [NSTask new];
+	// NSString *urlopenCommand = [NSString stringWithFormat:@"uiopen %@", urlString];
+    // [t setLaunchPath:urlopenCommand];
+    // [t launch];
+// }
 
 static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
     NSArray *urlPathItems = [pathString componentsSeparatedByString:@"/"];
@@ -96,6 +103,14 @@ static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
         safeMode();
     } else if ([item.localizedTitle.lowercaseString isEqualToString:@"uicache"]) {
         uicache();
+    } else if ([item.localizedTitle.lowercaseString containsString:@"://"]) {
+		//打开url scheme
+		NSRange range = [item.localizedTitle rangeOfString:@"://"];
+        NSString *urlStr = [item.localizedTitle substringFromIndex:range.location+3];
+		//showAlert(urlStr);
+        //urlopen(urlStr);
+        NSURL *url = [NSURL URLWithString:urlStr];
+		[[UIApplication sharedApplication] _openURL:url];
     } else { //open pref pane
         NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
         DLog(@"Should open %@", urlString);
@@ -115,9 +130,15 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
 
     //handle strings containing path
     if ([title containsString:@"/"]) {
-        NSArray *urlPathItems = [title componentsSeparatedByString:@"/"];
-        title = urlPathItems[urlPathItems.count - 1];
+		if ([title containsString:@"://"]) {
+			NSArray *urlPathItems = [title componentsSeparatedByString:@"://"];
+			title = urlPathItems[0];
+		}else{
+			NSArray *urlPathItems = [title componentsSeparatedByString:@"/"];
+			title = urlPathItems[urlPathItems.count - 1];
+		}
     }
+	
 
     //handle strings like BATTERY_USAGE
     if ([title containsString:@"_"]) {
@@ -155,7 +176,8 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
         activateQuickPrefsAction(item);
     }
 
-    %orig;
+	//停止执行后面代码
+    //%orig;
 }
 
 %end //hook SBUIAppIconForceTouchController
@@ -197,7 +219,8 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
         activateQuickPrefsAction(item);
     }
 
-    %orig;
+	//停止执行后面代码
+    //%orig;
 }
 
 %end //hook SBIconView

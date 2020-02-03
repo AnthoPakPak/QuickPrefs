@@ -4,7 +4,6 @@
 <dict>
 	<key>items</key>
 	<array>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -13,187 +12,183 @@
 			<key>icon</key>
 			<string>header.png</string>
 		</dict>
-
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>isStaticText</key>
-			<true/>
 			<key>footerText</key>
 			<string>ENABLED_FOOTER</string>
+			<key>isStaticText</key>
+			<true/>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
-			<key>label</key>
-			<string>ENABLED</string>
 			<key>key</key>
 			<string>enabled</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>label</key>
+			<string>ENABLED</string>
 		</dict>
-
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>ITEMS_NAMES</string>
-			<key>isStaticText</key>
-			<true/>
 			<key>footerText</key>
 			<string>ITEMS_NAMES_FOOTER</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>ITEMS_NAMES</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item1</string>
 			<key>label</key>
 			<string>Item 1</string>
 			<key>placeholder</key>
-			<string>TWEAK_NAME</string>		
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item1</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<string>TWEAK_NAME</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item2</string>
 			<key>label</key>
 			<string>Item 2</string>
 			<key>placeholder</key>
 			<string>TWEAK_NAME</string>
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item2</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item3</string>
 			<key>label</key>
 			<string>Item 3</string>
 			<key>placeholder</key>
-			<string>TWEAK_NAME</string>		
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item3</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<string>TWEAK_NAME</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item4</string>
 			<key>label</key>
 			<string>Item 4</string>
 			<key>placeholder</key>
 			<string>TWEAK_NAME</string>
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item4</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item5</string>
 			<key>label</key>
 			<string>Item 5</string>
 			<key>placeholder</key>
 			<string>TWEAK_NAME</string>
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item5</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item6</string>
 			<key>label</key>
 			<string>Item 6</string>
 			<key>placeholder</key>
 			<string>TWEAK_NAME</string>
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item6</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item7</string>
 			<key>label</key>
 			<string>Item 7</string>
 			<key>placeholder</key>
 			<string>TWEAK_NAME</string>
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item7</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>autoCaps</key>
+			<string>words</string>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
+			<key>key</key>
+			<string>item8</string>
 			<key>label</key>
 			<string>Item 8</string>
 			<key>placeholder</key>
 			<string>TWEAK_NAME</string>
-			<key>autoCaps</key>
-			<string>words</string>
-			<key>key</key>
-			<string>item8</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
- 		<dict>
+		<dict>
 			<key>action</key>
 			<string>respring:</string>
 			<key>cell</key>
@@ -201,59 +196,54 @@
 			<key>label</key>
 			<string>RESPRING</string>
 		</dict>
-
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>MISCELLANEOUS</string>
-			<key>isStaticText</key>
-			<true/>
 			<key>footerText</key>
 			<string>MISCELLANEOUS_FOOTER</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>MISCELLANEOUS</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
-			<key>label</key>
-			<string>Show items above stock ones</string>
 			<key>key</key>
 			<string>quickPrefsItemsAboveStockItems</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>label</key>
+			<string>Show items above stock ones</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
-			<key>label</key>
-			<string>Remove stock items</string>
 			<key>key</key>
 			<string>removeStockItems</string>
-			<key>PostNotification</key>
-			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+			<key>label</key>
+			<string>Remove stock items</string>
 		</dict>
-
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>EXAMPLES_AND_CUSTOM_URLS</string>
-			<key>isStaticText</key>
-			<true/>
 			<key>footerText</key>
 			<string>EXAMPLES_AND_CUSTOM_URLS_FOOTER</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>EXAMPLES_AND_CUSTOM_URLS</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -268,15 +258,13 @@
 			<key>url</key>
 			<string>https://bit.ly/iOSPreferencesUrlsSpreadsheet</string>
 		</dict>
-
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>isStaticText</key>
-			<true/>
 			<key>footerText</key>
 			<string>VERSION_NUMBER</string>
+			<key>isStaticText</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -305,6 +293,24 @@
 			<string>CHECK_THE_CODE</string>
 			<key>url</key>
 			<string>https://github.com/AnthoPakPak/QuickPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>New_features_by</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>GITHUB</string>
+			<key>subtitle</key>
+			<string>CHECK_THE_CODE</string>
+			<key>url</key>
+			<string>https://github.com/lwlsw/QuickPrefs</string>
 		</dict>
 	</array>
 	<key>title</key>

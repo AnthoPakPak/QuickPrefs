@@ -5,7 +5,8 @@
   "ITEMS_NAMES" = "ITEMS NAMES";
   "ITEMS_NAMES_FOOTER" = "- Set name of up to 8 tweaks, with the exact same name as they show on your Settings page. You can also use custom paths (see below). You must respect letter case.
 Respring shouldn't be require if you use the Return key after setting the name.
-- You can also use \"Respring\", \"Safe Mode\" and \"UICache\" to create items that will run said command.";
+- You can also use \"Respring\", \"Safe Mode\" and \"UICache\" to create items that will run said command.
+- You can use a third-party app's url scheme.";
   "TWEAK_NAME" = "Tweak name or path";
 
   "MISCELLANEOUS_FOOTER" = "Starting from a certain number of items, you will have to hide stock items to make place for your items.";
@@ -16,6 +17,7 @@ Respring shouldn't be require if you use the Return key after setting the name.
 - Tweaks/QuickPrefs (if you have shuffle or PreferenceOrganizer2)
 - General/Keyboard
 - NOTIFICATIONS_ID
+- Menu display name://url scheme(E.g:\"I'm Alipay://alipay://\")
 
 You can write the name of a tweak to directly open its preferences pane. Custom paths are also supported to allow open as many Settings.app preferences panes as possible. You can write items names as paths to dive into subcategories of Settings.app categories.
 
@@ -24,10 +26,11 @@ For stock Settings panes, the values to use for the path are not straightforward
   "SETTINGS_URLS_SPREADSHEET" = "Stock settings URLs spreadsheet";
   "SETTINGS_URLS_SPREADSHEET_SUBTITLE" = "Get values for some stock Settings panes";
 
-  "VERSION_NUMBER" = "Version 1.2";
+  "VERSION_NUMBER" = "Third-party app support features developed by whoami";
   "RESPRING" = "Respring (not always required)";
   "DONATE" = "Donate";
   "SUPPORT_ME" = "You like my work and want to support me?";
   "GITHUB" = "GitHub";
   "CHECK_THE_CODE" = "Check out the code!";
+  "New_features_by" = "New features by whoami";
 }

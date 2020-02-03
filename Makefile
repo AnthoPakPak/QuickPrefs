@@ -1,10 +1,11 @@
 #export THEOS=/var/theos
-export THEOS_DEVICE_IP=192.168.0.23
+export THEOS_DEVICE_IP=192.168.11.23
 export THEOS_DEVICE_PORT=22
 
-#FINALPACKAGE=1
-export SIMULATOR=1
+FINALPACKAGE=1
+#export SIMULATOR=1
 # USB=1
+RESPRING=1
 
 ifeq ($(USB),1)
 	export THEOS_DEVICE_IP=localhost
@@ -29,4 +30,4 @@ after-install::
 ifeq ($(RESPRING),1)
 	install.exec "killall backboardd"
 endif
-	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Install success' -i 'tick' -d '1'
+#	/Applications/OSDisplay.app/Contents/MacOS/OSDisplay -m 'Install success' -i 'tick' -d '1'

@@ -1,0 +1,47 @@
+{
+  "ENABLED" = "开启";
+  "ENABLED_FOOTER" = "所有更改将立即生效。";
+
+  "ITEMS_NAMES" = "项目名称";
+  "ITEMS_NAMES_FOOTER" = "-最多设置8个调整的名称，其名称与“设置”页面上显示的名称完全相同。 您还可以使用自定义路径（请参见下文）。 您必须尊重字母大小写。
+如果在设置名称后使用Return键，则不需要注销则会立即生效。
+-您还可以使用“ Respring ”，“ Safe Mode ”和“ UICache ”创建将运行所述命令的项目。
+-您可以使用第三方应用的url scheme来调用第三方应用。";
+  "TWEAK_NAME" = "插件名称或路径";
+
+  "MISCELLANEOUS_FOOTER" = "如果项目数量过多，屏幕无法显示的话，可能会隐藏一部分项目。";
+
+  "EXAMPLES_AND_CUSTOM_URLS" = "示例和自定义路径";
+  "EXAMPLES_AND_CUSTOM_URLS_FOOTER" = "以下是一些参考示例：
+-QuickPrefs
+-Tweaks/QuickPrefs（如果您有shuffle或PreferenceOrganizer2）
+-General/Keyboard
+-NOTIFICATIONS_ID
+-菜单显示名称://app的url scheme（例如：“我是支付宝://alipay://”）
+
+您可以输入插件的名称以直接打开其设置页面。 还支持自定义路径，以允许打开尽可能多的设置项目页面。 您可以将项目名称写为可深入到 设置app 类别的子类别的路径。
+
+对于更深层路径的设置页面，并不好获取他的值。 您应该参考下面链接的电子表格以获取正确的值。 如果看到“Prefs:root=General&path=Keyboard”，则应在项目名称中输入“General/Keyboard”。 你可以查看下方链接中的设置项目的url值，然后多试几次（切记一定要用英语值）。";
+  
+  "SETTINGS_URLS_SPREADSHEET" = "所有设置项目的url值";
+  "SETTINGS_URLS_SPREADSHEET_SUBTITLE" = "获取所有设置项目的url值";
+
+  "VERSION_NUMBER" = "第三方app支持由whoami开发。";
+  "RESPRING" = "注销 (大部分情况无需注销即可生效)";
+  "DONATE" = "捐助";
+  "SUPPORT_ME" = "你喜欢我的项目，想支持我吗？";
+  "GITHUB" = "GitHub";
+  "CHECK_THE_CODE" = "查阅代码！";
+  "New_features_by" = "新功能 by whoami";
+  "Item 1" = "项目1";
+  "Item 2" = "项目2";
+  "Item 3" = "项目3";
+  "Item 4" = "项目4";
+  "Item 5" = "项目5";
+  "Item 6" = "项目6";
+  "Item 7" = "项目7";
+  "Item 8" = "项目8";
+  "MISCELLANEOUS" = "杂项";
+  "Show items above stock ones" = "增加的项目在系统项目之上";
+  "Remove stock items" = "移除系统项目";
+}

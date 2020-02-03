@@ -1,3 +1,8 @@
+# 新功能
+
+支持直接调用第三方app的url scheme。
+增加简体中文语言。
+
 # QuickPrefs
 
 **Quickly access tweak prefs with Force Touch. This is a Theos iOS tweak.**
