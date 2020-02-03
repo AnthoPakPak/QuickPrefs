@@ -174,10 +174,10 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
 -(void)appIconForceTouchShortcutViewController:(id)arg1 activateApplicationShortcutItem:(SBSApplicationShortcutItem *)item {
     if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
         activateQuickPrefsAction(item);
-    }
+    }else{
 
-	//停止执行后面代码
-    //%orig;
+		%orig;
+	}
 }
 
 %end //hook SBUIAppIconForceTouchController
@@ -217,10 +217,9 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
     DLog(@"activateShortcut %@ | %@ | %@", item, arg2, arg3);
     if ([[item type] isEqualToString:@"QuickPrefsItem"]) {
         activateQuickPrefsAction(item);
-    }
-
-	//停止执行后面代码
-    //%orig;
+    }else{
+		%orig;
+	}
 }
 
 %end //hook SBIconView
