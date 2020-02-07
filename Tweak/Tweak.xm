@@ -19,14 +19,14 @@ BOOL removeStockItems;
 NSMutableArray<NSString*> *itemsList;
 
 
-// static UIViewController* topMostController() {
-    // UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    // while (topController.presentedViewController) {
-        // topController = topController.presentedViewController;
-    // }
+static UIViewController* topMostController() {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
     
-    // return topController;
-// }
+    return topController;
+}
 
 // static void showAlert(NSString *myMessage) {
     // UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:myMessage preferredStyle:UIAlertControllerStyleAlert];
@@ -34,12 +34,6 @@ NSMutableArray<NSString*> *itemsList;
     // [topMostController() presentViewController:alertController animated:YES completion:nil];
 // }
 
-static void respring() {
-    NSTask *t = [NSTask new];
-    [t setLaunchPath:@"/usr/bin/killall"];
-    [t setArguments:@[@"backboardd"]];
-    [t launch];
-}
 
 static void safeMode() {
     NSTask *t = [NSTask new];
@@ -48,18 +42,58 @@ static void safeMode() {
     [t launch];
 }
 
-static void uicache() {
+static void Respring() {
+    NSTask *t = [NSTask new];
+    [t setLaunchPath:@"/usr/bin/killall"];
+    [t setArguments:@[@"backboardd"]];
+    [t launch];
+}
+
+static void UIcache() {
     NSTask *t = [NSTask new];
     [t setLaunchPath:@"/usr/bin/uicache"];
     [t launch];
 }
 
-// static void urlopen(NSString* urlString) {
-    // NSTask *t = [NSTask new];
-	// NSString *urlopenCommand = [NSString stringWithFormat:@"uiopen %@", urlString];
-    // [t setLaunchPath:urlopenCommand];
-    // [t launch];
-// }
+static void powerMenu() {
+	//菜单形式展示
+	UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"请您选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    /*
+     typedef NS_ENUM(NSInteger, UIAlertActionStyle) {
+     UIAlertActionStyleDefault = 0,
+     UIAlertActionStyleCancel,         取消按钮
+     UIAlertActionStyleDestructive     破坏性按钮，比如：“删除”，字体颜色是红色的
+     } NS_ENUM_AVAILABLE_IOS(8_0);
+     
+     */
+    // 创建action，这里action1只是方便编写，以后再编程的过程中还是以命名规范为主
+    UIAlertAction *respring = [UIAlertAction actionWithTitle:@"注销" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"注销");
+		Respring();
+    }];
+    UIAlertAction *safemode = [UIAlertAction actionWithTitle:@"安全模式" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"安全模式");
+		safeMode();
+    }];
+    UIAlertAction *uicache = [UIAlertAction actionWithTitle:@"清理图标缓存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"uicache");
+		UIcache();
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"取消");
+    }];
+    
+    //把action添加到actionSheet里
+    [actionSheet addAction:uicache];
+    [actionSheet addAction:safemode];
+    [actionSheet addAction:respring];
+    [actionSheet addAction:cancel];
+    
+    //相当于之前的[actionSheet show];
+    [topMostController() presentViewController:actionSheet animated:YES completion:nil];
+}
+
 
 static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
     NSArray *urlPathItems = [pathString componentsSeparatedByString:@"/"];
@@ -98,11 +132,13 @@ static NSArray<SBSApplicationShortcutItem*>* addItemsToStockItems(NSArray<SBSApp
 
 static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
     if ([item.localizedTitle.lowercaseString isEqualToString:@"respring"]) {
-        respring();
+        Respring();
+    } else if ([item.localizedTitle.lowercaseString isEqualToString:@"注销菜单"]) {
+        powerMenu();
     } else if ([item.localizedTitle.lowercaseString isEqualToString:@"safe mode"]) {
         safeMode();
     } else if ([item.localizedTitle.lowercaseString isEqualToString:@"uicache"]) {
-        uicache();
+        UIcache();
     } else if ([item.localizedTitle.lowercaseString containsString:@"://"]) {
 		//打开url scheme
 		NSRange range = [item.localizedTitle rangeOfString:@"://"];
