@@ -295,6 +295,20 @@
 			<key>PostNotification</key>
 			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Reverse items order</string>
+			<key>key</key>
+			<string>reverseItemsOrder</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
 
 
 		<dict>

@@ -19,6 +19,7 @@ NSString *item11;
 NSString *item12;
 BOOL quickPrefsItemsAboveStockItems;
 BOOL removeStockItems;
+BOOL reverseItemsOrder;
 
 NSMutableArray<NSString*> *itemsList;
 
@@ -103,11 +104,14 @@ static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
         safeMode();
     } else if ([item.localizedTitle.lowercaseString isEqualToString:@"uicache"]) {
         uicache();
+    // } else if ([item.localizedTitle.lowercaseString isEqualToString:@"home"]) {
+        // NSURL *url = [NSURL URLWithString:@"prefs://"]; //i've tried different paths, doesn't work.
+        // [[UIApplication sharedApplication] _openURL:url];
     } else { //open pref pane
         NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
         DLog(@"Should open %@", urlString);
 
-        NSURL*url = [NSURL URLWithString:urlString];
+        NSURL *url = [NSURL URLWithString:urlString];
 
         // if ([[UIApplication sharedApplication] canOpenURL:url]) { //unfortunately returns YES whatever the name is
             [[UIApplication sharedApplication] _openURL:url];
@@ -264,7 +268,7 @@ static void reloadItemsList() {
         addItemToItemsListIfNotNil(item11);
         addItemToItemsListIfNotNil(item12);
 
-        if (quickPrefsItemsAboveStockItems) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
+        if (reverseItemsOrder) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
     }
 
     DLog(@"new itemsList %@", itemsList);
@@ -293,6 +297,7 @@ static void reloadItemsList() {
     [preferences registerObject:&item12 default:nil forKey:@"item12"];
     [preferences registerBool:&quickPrefsItemsAboveStockItems default:NO forKey:@"quickPrefsItemsAboveStockItems"];
     [preferences registerBool:&removeStockItems default:NO forKey:@"removeStockItems"];
+    [preferences registerBool:&reverseItemsOrder default:NO forKey:@"reverseItemsOrder"];
 
     reloadItemsList();
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItemsList, (CFStringRef)@"com.anthopak.quickprefs/ReloadPrefs", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
