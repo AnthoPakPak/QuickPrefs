@@ -41,7 +41,7 @@ static void handleGesture(UIGestureRecognizer *gestureRecognizer, PSListControll
     NSString *specifierIdentifier = [specifier identifier];
 
     if (specifierIdentifier) {
-        NSString *message = [NSString stringWithFormat:@"%@\n\nThis is the identifier of this page/subpage. Use it in QuickPrefs to access to this page. If this is a subpage, use it like this: PREVIOUS_PAGE/%@", specifierIdentifier, specifierIdentifier];
+        NSString *message = [NSString stringWithFormat:@"%@\n\nThis is the identifier of this page/subpage. Use it in QuickPrefs to access to this page. If this is a subpage, use it like this: PREVIOUS_PAGE_ID/%@", specifierIdentifier, specifierIdentifier];
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"QuickPrefs Path Finder" message:message preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"Copy ID" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

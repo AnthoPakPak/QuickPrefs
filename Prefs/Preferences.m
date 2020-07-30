@@ -149,7 +149,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
     } else if (section == 5) { //my other tweaks
         return 60;
     } else {
-        return 45;
+        return [self tableView:tableView titleForHeaderInSection:section] ? 45 : 0;
     }
 }
 

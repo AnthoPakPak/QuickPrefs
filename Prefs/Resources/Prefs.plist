@@ -329,7 +329,7 @@
 			<key>defaults</key>
 			<string>com.anthopak.quickprefs</string>
 			<key>label</key>
-			<string>Path Finder enabled</string>
+			<string>Path Finder enabled (read below)</string>
 			<key>key</key>
 			<string>pathFinderEnabled</string>
 			<key>PostNotification</key>
@@ -339,6 +339,16 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>QUICK_PREFS_VIDEO</string>
+			<key>subtitle</key>
+			<string>QUICK_PREFS_VIDEO_SUBTITLE</string>
+			<key>url</key>
+			<string>https://youtu.be/m5N07b2_Hxs</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>

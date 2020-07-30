@@ -3,12 +3,12 @@
   "ENABLED_FOOTER" = "All changes are applied immediately.";
 
   "ITEMS_NAMES" = "ITEMS NAMES";
-  "ITEMS_NAMES_FOOTER" = "- Set name of up to 8 tweaks, with the exact same name as they show on your Settings page. You can also use custom paths (see below). You must respect letter case.
-Respring shouldn't be require if you use the Return key after setting the name.
+  "ITEMS_NAMES_FOOTER" = "- Set name of up to 12 tweaks or settings pages, with the exact same name as they show on your Settings page. You can also use custom paths (see below how to find identifiers). You must respect letter case.
+Respring shouldn't be required if you use the Return key after setting the name.
 - You can also use \"Respring\", \"Safe Mode\" and \"UICache\" to create items that will run said command.";
   "TWEAK_NAME" = "Tweak name or path";
 
-  "MISCELLANEOUS_FOOTER" = "Starting from a certain number of items, you will have to hide stock items to make place for your items.";
+  "MISCELLANEOUS_FOOTER" = "Starting from a certain number of items, you will have to hide stock items to make room for your items.";
 
   "EXAMPLES_AND_CUSTOM_URLS" = "EXAMPLES AND CUSTOM PATHS";
   "EXAMPLES_AND_CUSTOM_URLS_FOOTER" = "Here are some examples of values you can use:
@@ -19,12 +19,15 @@ Respring shouldn't be require if you use the Return key after setting the name.
 
 You can write the name of a tweak to directly open its preferences pane. Custom paths are also supported to allow open as many Settings.app preferences panes as possible. You can write items names as paths to dive into subcategories of Settings.app categories.
 
-For stock Settings panes, the values to use for the path are not straightforward. You should refer to the spreadsheet linked below to get the correct values. If you see \"Prefs:root=General&path=Keyboard\" you should write \"General/Keyboard\" in item name. The spreadsheet isn't exhaustive, you can make some tries with other values but chances are it won't work (always try with english values).";
+For stock Settings panes, the values to use for the path are not straightforward. To find out the path you want, enable \"Path Finder\" option above, and long press rows you're interested in to build the path. It will reveal the identifier of the row, and allow you to copy it to clipboard. This way you can build paths like \"ACCESSIBILITY/DISPLAY_AND_TEXT/Smart Invert\". You can disable this setting after you have found your path. Check out the video below to see how to do.";
   
+  "QUICK_PREFS_VIDEO" = "QuickPrefs tutorial";
+  "QUICK_PREFS_VIDEO_SUBTITLE" = "Check out how to find identifiers for your paths";
+
   "SETTINGS_URLS_SPREADSHEET" = "Stock settings URLs spreadsheet";
   "SETTINGS_URLS_SPREADSHEET_SUBTITLE" = "Get values for some stock Settings panes";
 
-  "VERSION_NUMBER" = "Version 1.2";
+  "VERSION_NUMBER" = "Version 1.3";
   "RESPRING" = "Respring (not always required)";
   "DONATE" = "Donate";
   "SUPPORT_ME" = "You like my work and want to support me?";
