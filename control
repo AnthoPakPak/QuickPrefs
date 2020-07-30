@@ -3,7 +3,8 @@ Name: QuickPrefs
 Depends: mobilesubstrate
 Version: 1.3
 Architecture: iphoneos-arm
-Description: Quickly access tweak prefs with Force/Haptic Touch
-Maintainer: AnthoPak
-Author: AnthoPak
+Description: Quickly access settings prefs from 3D Touch Menu
+Maintainer: AnthoPak <anthopakdev@gmail.com>
+Author: AnthoPak <anthopakdev@gmail.com>
 Section: Tweaks
+Icon: file:///Library/PreferenceBundles/QuickPrefsPrefs.bundle/icon@2x.png
