@@ -8,16 +8,6 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>headerCellClass</key>
-			<string>HBImageTableCell</string>
-			<key>icon</key>
-			<string>header.png</string>
-		</dict>
-
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 			<key>isStaticText</key>
 			<true/>
 			<key>footerText</key>
@@ -193,14 +183,6 @@
 			<key>PostNotification</key>
 			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
- 		<dict>
-			<key>action</key>
-			<string>respring:</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>RESPRING</string>
-		</dict>
 
 
 		<dict>
@@ -281,6 +263,126 @@
 			<string>SETTINGS_URLS_SPREADSHEET_SUBTITLE</string>
 			<key>url</key>
 			<string>https://bit.ly/iOSPreferencesUrlsSpreadsheet</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>My other tweaks</string>
+			<key>footerText</key>
+			<string>Check out my other tweaks!</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Appaze 2</string>
+			<key>subtitle</key>
+			<string>Customize volume/brightness/toggles per app, directly from 3DTouch menu</string>
+			<key>icon</key>
+    		<string>otherTweaks/appaze@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/Appaze2Cross</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>LastLook</string>
+			<key>subtitle</key>
+			<string>Get a last look at your phone! (AOD and Short modes)</string>
+			<key>icon</key>
+    		<string>otherTweaks/lastLook@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/LastLookCross</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Sleepizy</string>
+			<key>subtitle</key>
+			<string>Fall asleep in music! Set a timer to stop your music directly from CC</string>
+			<key>icon</key>
+    		<string>otherTweaks/sleepizy@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/SleepizyCross</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>BlueFinder</string>
+			<key>subtitle</key>
+			<string>Find your iPhone using your Bluetooth devices!</string>
+			<key>icon</key>
+    		<string>otherTweaks/blueFinder@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/BlueFinderCross</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>SwitchShades</string>
+			<key>subtitle</key>
+			<string>Bring color to your app switcher based on app icon</string>
+			<key>icon</key>
+    		<string>otherTweaks/switchShades@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/SwitchShadesCross</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>VideoSwipes</string>
+			<key>subtitle</key>
+			<string>Swipe gestures for video players (native, YouTube, Facebook)</string>
+			<key>icon</key>
+    		<string>otherTweaks/videoSwipes@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/VideoSwipesCrossAPRepo</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>PanCake</string>
+			<key>subtitle</key>
+			<string>Interactive dismiss gesture on whole screen in all apps</string>
+			<key>icon</key>
+    		<string>otherTweaks/panCake@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/PanCakeCrossAPRepo</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>AddToFolder</string>
+			<key>subtitle</key>
+			<string>Easily move apps to your folders</string>
+			<key>icon</key>
+    		<string>otherTweaks/addToFolder@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/AddToFolderCross</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>NotiVibe</string>
+			<key>subtitle</key>
+			<string>Know if you have a notification without looking at your phone!</string>
+			<key>icon</key>
+    		<string>otherTweaks/notiVibe@2x.png</string>
+			<key>url</key>
+			<string>http://bit.ly/NotiVibeCrossAPRepo</string>
 		</dict>
 
 
