@@ -40,16 +40,18 @@ static void handleGesture(UIGestureRecognizer *gestureRecognizer, PSListControll
     PSSpecifier *specifier = [cell specifier];
     NSString *specifierIdentifier = [specifier identifier];
 
-    NSString *message = [NSString stringWithFormat:@"%@\n\nThis is the identifier of this page/subpage. Use it in QuickPrefs to access to this page. If this is a subpage, use it like this: PREVIOUS_PAGE/%@", specifierIdentifier, specifierIdentifier];
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"QuickPrefs Path Finder" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Copy ID" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        pasteboard.string = specifierIdentifier;
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    
-    [listVC presentViewController:alertController animated:YES completion:nil];
+    if (specifierIdentifier) {
+        NSString *message = [NSString stringWithFormat:@"%@\n\nThis is the identifier of this page/subpage. Use it in QuickPrefs to access to this page. If this is a subpage, use it like this: PREVIOUS_PAGE/%@", specifierIdentifier, specifierIdentifier];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"QuickPrefs Path Finder" message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Copy ID" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            pasteboard.string = specifierIdentifier;
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        
+        [listVC presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 %hook PSListController
