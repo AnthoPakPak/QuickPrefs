@@ -73,6 +73,9 @@ static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
 }
 
 static NSArray<SBSApplicationShortcutItem*>* addItemsToStockItems(NSArray<SBSApplicationShortcutItem*>* stockItems) {
+    if (!enabled) {
+        return stockItems;
+    }
     NSMutableArray *stockAndCustomItems = removeStockItems ? @[].mutableCopy : [stockItems mutableCopy];
     if (!stockAndCustomItems) stockAndCustomItems = [NSMutableArray new];
 
