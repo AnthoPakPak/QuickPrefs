@@ -183,6 +183,78 @@
 			<key>PostNotification</key>
 			<string>com.anthopak.quickprefs/ReloadPrefs</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 9</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item9</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 10</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item10</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 11</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item11</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string></string>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Item 12</string>
+			<key>placeholder</key>
+			<string>TWEAK_NAME</string>
+			<key>autoCaps</key>
+			<string>words</string>
+			<key>key</key>
+			<string>item12</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
 
 
 		<dict>

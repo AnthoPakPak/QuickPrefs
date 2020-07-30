@@ -13,6 +13,10 @@ NSString *item5;
 NSString *item6;
 NSString *item7;
 NSString *item8;
+NSString *item9;
+NSString *item10;
+NSString *item11;
+NSString *item12;
 BOOL quickPrefsItemsAboveStockItems;
 BOOL removeStockItems;
 
@@ -255,6 +259,10 @@ static void reloadItemsList() {
         addItemToItemsListIfNotNil(item6);
         addItemToItemsListIfNotNil(item7);
         addItemToItemsListIfNotNil(item8);
+        addItemToItemsListIfNotNil(item9);
+        addItemToItemsListIfNotNil(item10);
+        addItemToItemsListIfNotNil(item11);
+        addItemToItemsListIfNotNil(item12);
 
         if (quickPrefsItemsAboveStockItems) itemsList = [[itemsList reverseObjectEnumerator] allObjects].mutableCopy;
     }
@@ -279,6 +287,10 @@ static void reloadItemsList() {
     [preferences registerObject:&item6 default:nil forKey:@"item6"];
     [preferences registerObject:&item7 default:nil forKey:@"item7"];
     [preferences registerObject:&item8 default:nil forKey:@"item8"];
+    [preferences registerObject:&item9 default:nil forKey:@"item9"];
+    [preferences registerObject:&item10 default:nil forKey:@"item10"];
+    [preferences registerObject:&item11 default:nil forKey:@"item11"];
+    [preferences registerObject:&item12 default:nil forKey:@"item12"];
     [preferences registerBool:&quickPrefsItemsAboveStockItems default:NO forKey:@"quickPrefsItemsAboveStockItems"];
     [preferences registerBool:&removeStockItems default:NO forKey:@"removeStockItems"];
 
