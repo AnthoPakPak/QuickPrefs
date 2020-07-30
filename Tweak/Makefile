@@ -10,7 +10,7 @@ endif
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = QuickPrefs
-$(TWEAK_NAME)_FILES = Tweak.xm
+$(TWEAK_NAME)_FILES = Tweak.xm PathFinder.xm
 
 
 ifeq ($(SIMULATOR),1)

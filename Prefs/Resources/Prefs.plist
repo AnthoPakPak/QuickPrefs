@@ -253,6 +253,20 @@
 			<key>footerText</key>
 			<string>EXAMPLES_AND_CUSTOM_URLS_FOOTER</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.anthopak.quickprefs</string>
+			<key>label</key>
+			<string>Path Finder enabled</string>
+			<key>key</key>
+			<string>pathFinderEnabled</string>
+			<key>PostNotification</key>
+			<string>com.anthopak.quickprefs/ReloadPrefs</string>
+		</dict>
 
 		<dict>
 			<key>cell</key>
