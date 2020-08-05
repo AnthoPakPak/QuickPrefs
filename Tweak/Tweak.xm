@@ -122,6 +122,10 @@ static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
 }
 
 static NSString* getReadableTitleFromPathString(NSString *pathString) {
+    if (![itemsList containsObject:pathString]) { //stock items
+        return pathString;
+    }
+
     NSString *title = pathString;
 
     //handle strings containing path
