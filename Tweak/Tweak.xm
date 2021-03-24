@@ -220,10 +220,16 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
 
 %hook _UIContextMenuActionView
 
+//iOS 13
 -(id)initWithTitle:(id)title subtitle:(id)arg2 image:(id)arg3 {
     title = getReadableTitleFromPathString(title);
 
     return %orig;
+}
+
+//iOS 14
+- (void)setTitle:(id)title {
+    %orig(getReadableTitleFromPathString(title));
 }
 
 %end //hook SBUIAction
