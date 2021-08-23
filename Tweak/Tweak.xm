@@ -59,6 +59,13 @@ static void uicache() {
     [t launch];
 }
 
+//This one requires `com.smokin1337.ldrestarthelper` package.
+static void ldrestart() {
+    NSTask *t = [NSTask new];
+    [t setLaunchPath:@"/usr/bin/sreboot"];
+    [t launch];
+}
+
 static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
     NSArray *urlPathItems = [pathString componentsSeparatedByString:@"/"];
 
@@ -104,6 +111,8 @@ static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
         safeMode();
     } else if ([item.localizedTitle.lowercaseString isEqualToString:@"uicache"]) {
         uicache();
+    } else if ([item.localizedTitle.lowercaseString isEqualToString:@"ldrestart"]) {
+        ldrestart();
     // } else if ([item.localizedTitle.lowercaseString isEqualToString:@"home"]) {
         // NSURL *url = [NSURL URLWithString:@"prefs://"]; //i've tried different paths, doesn't work.
         // [[UIApplication sharedApplication] _openURL:url];
