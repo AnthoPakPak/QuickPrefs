@@ -23,6 +23,7 @@ BOOL reverseItemsOrder;
 
 NSMutableArray<NSString*> *itemsList;
 
+id settingsAppLaunchObserver;
 
 // static UIViewController* topMostController() {
 //     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -64,6 +65,15 @@ static void ldrestart() {
     NSTask *t = [NSTask new];
     [t setLaunchPath:@"/usr/bin/sreboot"];
     [t launch];
+}
+
+void addSettingsAppLaunchObserverWithBlock(void (^settingsAppAfterLaunchAction)()) {
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:settingsAppLaunchObserver name:@"quickPrefs.settingsAppDidFinishLaunching" object:nil]; //always remove the observer before re-adding so that it isn't created twice
+    settingsAppLaunchObserver = [[NSDistributedNotificationCenter defaultCenter] addObserverForName:@"quickPrefs.settingsAppDidFinishLaunching" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+        if (settingsAppAfterLaunchAction) {
+            settingsAppAfterLaunchAction();
+        }
+    }];
 }
 
 static NSString* getPrefsUrlStringFromPathString(NSString* pathString) {
@@ -113,9 +123,24 @@ static void activateQuickPrefsAction(SBSApplicationShortcutItem* item) {
         uicache();
     } else if ([item.localizedTitle.lowercaseString isEqualToString:@"ldrestart"]) {
         ldrestart();
-    // } else if ([item.localizedTitle.lowercaseString isEqualToString:@"home"]) {
-        // NSURL *url = [NSURL URLWithString:@"prefs://"]; //i've tried different paths, doesn't work.
-        // [[UIApplication sharedApplication] _openURL:url];
+    } else if ([item.localizedTitle.lowercaseString isEqualToString:@"home"]) {
+        //Open prefs app and asks it to go home
+
+        //Set a block that will be called when settings app has finished launching, in case it's not opened yet.
+        addSettingsAppLaunchObserverWithBlock(^() {
+            [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"quickPrefs.goGome" object:nil userInfo:nil];
+        });
+        //Also send the notification directly, in case the app is already opened.
+        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"quickPrefs.goGome" object:nil userInfo:nil];
+    } else if ([item.localizedTitle.lowercaseString isEqualToString:@"search"]) {
+        //Open prefs app and asks it to search
+
+        //Set a block that will be called when settings app has finished launching, in case it's not opened yet.
+        addSettingsAppLaunchObserverWithBlock(^() {
+            [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"quickPrefs.search" object:nil userInfo:nil];
+        });
+        //Also send the notification directly, in case the app is already opened.
+        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"quickPrefs.search" object:nil userInfo:nil];
     } else { //open pref pane
         NSString *urlString = getPrefsUrlStringFromPathString(item.localizedTitle);
         DLog(@"Should open %@", urlString);
