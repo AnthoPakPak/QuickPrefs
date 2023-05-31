@@ -497,6 +497,8 @@
 			<string>AnthoPak</string>
 			<key>user</key>
 			<string>AnthoPak</string>
+			<key>iconURL</key>
+			<string>https://anthopak.dev/files/AnthoPak_profile_picture.png</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>

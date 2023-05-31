@@ -1,6 +1,6 @@
 #import "Preferences.h"
 
-#define prefPath [NSString stringWithFormat:@"%@/Library/Preferences/%@", NSHomeDirectory(), @"com.anthopak.quickprefs.plist"]
+#define prefPath ROOT_PATH_NS_VAR(([NSString stringWithFormat:@"%@/Library/Preferences/%@", NSHomeDirectory(), @"com.anthopak.quickprefs.plist"]))
 #define prefsTintColor [UIColor colorWithRed:0.49 green:0.498 blue:0.518 alpha:1]
 
 static NSInteger headerPaddingTopBottom = 40;
@@ -80,7 +80,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
 
     self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,10,10)];
     self.iconView.contentMode = UIViewContentModeScaleAspectFit;
-    self.iconView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/QuickPrefsPrefs.bundle/icon@2x.png"];    
+    self.iconView.image = [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/PreferenceBundles/QuickPrefsPrefs.bundle/icon@2x.png")];    
     self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
     self.iconView.alpha = 0.0;
     [self.navigationItem.titleView addSubview:self.iconView];
@@ -110,7 +110,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,200,200)];
     self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,200,200)];
     self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.headerImageView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/QuickPrefsPrefs.bundle/header.png"];
+    self.headerImageView.image = [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/PreferenceBundles/QuickPrefsPrefs.bundle/header.png")];
     self.headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
 
     [self.headerView addSubview:self.headerImageView];
@@ -175,7 +175,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
 #pragma mark - Notice alerts for shuffle & PreferencesOrganizer2
 
 -(BOOL) shouldShowNoticeForShuffle {
-    if (!pref_getBool(@"shuffleNoticeHasAlreadyBeShown") && [[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/com.creaturecoding.shuffle.list"]) {
+    if (!pref_getBool(@"shuffleNoticeHasAlreadyBeShown") && [[NSFileManager defaultManager] fileExistsAtPath:ROOT_PATH_NS(@"/var/lib/dpkg/info/com.creaturecoding.shuffle.list")]) {
         pref_setBoolForKey(YES, @"shuffleNoticeHasAlreadyBeShown");
         return YES;
     }
@@ -183,7 +183,7 @@ static void showAlert(NSString *myTitle, NSString *myMessage, UIViewController *
 }
 
 -(BOOL) shouldShowNoticeForPreferenceOrganizer {
-    if (!pref_getBool(@"preferenceOrganizerNoticeHasAlreadyBeShown") && [[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/net.angelxwind.preferenceorganizer2.list"]) {
+    if (!pref_getBool(@"preferenceOrganizerNoticeHasAlreadyBeShown") && [[NSFileManager defaultManager] fileExistsAtPath:ROOT_PATH_NS(@"/var/lib/dpkg/info/net.angelxwind.preferenceorganizer2.list")]) {
         pref_setBoolForKey(YES, @"preferenceOrganizerNoticeHasAlreadyBeShown");
         return YES;
     }

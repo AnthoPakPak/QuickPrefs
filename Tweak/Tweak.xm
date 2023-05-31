@@ -1,4 +1,5 @@
 #import "Tweak.h"
+#import "rootless.h"
 
 #ifndef SIMULATOR
 HBPreferences *preferences;
@@ -42,28 +43,28 @@ id settingsAppLaunchObserver;
 
 static void respring() {
     NSTask *t = [NSTask new];
-    [t setLaunchPath:@"/usr/bin/killall"];
+    [t setLaunchPath:ROOT_PATH_NS(@"/usr/bin/killall")];
     [t setArguments:@[@"backboardd"]];
     [t launch];
 }
 
 static void safeMode() {
     NSTask *t = [NSTask new];
-    [t setLaunchPath:@"/usr/bin/killall"];
+    [t setLaunchPath:ROOT_PATH_NS(@"/usr/bin/killall")];
     [t setArguments:@[@"-SEGV", @"SpringBoard"]];
     [t launch];
 }
 
 static void uicache() {
     NSTask *t = [NSTask new];
-    [t setLaunchPath:@"/usr/bin/uicache"];
+    [t setLaunchPath:ROOT_PATH_NS(@"/usr/bin/uicache")];
     [t launch];
 }
 
 //This one requires `com.smokin1337.ldrestarthelper` package.
 static void ldrestart() {
     NSTask *t = [NSTask new];
-    [t setLaunchPath:@"/usr/bin/sreboot"];
+    [t setLaunchPath:ROOT_PATH_NS(@"/usr/bin/sreboot")];
     [t launch];
 }
 

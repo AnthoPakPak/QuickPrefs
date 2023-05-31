@@ -3,7 +3,7 @@ ARCHS = x86_64
 TARGET = simulator:clang:latest:7.0
 else
 ARCHS = arm64 arm64e
-TARGET = iphone:clang:11.2:11.0
+TARGET = iphone:clang:13.0:11.0
 endif
 
 
