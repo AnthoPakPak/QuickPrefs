@@ -44,7 +44,7 @@ id settingsAppLaunchObserver;
 static void respring() {
     NSTask *t = [NSTask new];
     [t setLaunchPath:ROOT_PATH_NS(@"/usr/bin/killall")];
-    [t setArguments:@[@"backboardd"]];
+    [t setArguments:@[@"SpringBoard"]];
     [t launch];
 }
 
