@@ -262,12 +262,21 @@ static NSString* getReadableTitleFromPathString(NSString *pathString) {
     return %orig;
 }
 
-//iOS 14
+//iOS 14-15
 - (void)setTitle:(id)title {
     %orig(getReadableTitleFromPathString(title));
 }
 
-%end //hook SBUIAction
+%end //hook _UIContextMenuActionView
+
+//iOS 16
+%hook _UIContextMenuCellContentView
+
+-(void) setTitle:(id)title {
+    %orig(getReadableTitleFromPathString(title));
+}
+
+%end //hook _UIContextMenuCellContentView
 
 %end //end group iOS13_up
 
